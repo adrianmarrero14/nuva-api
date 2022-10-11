@@ -15,17 +15,7 @@ class ReportController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return Report::all();
     }
 
     /**
@@ -36,29 +26,14 @@ class ReportController extends Controller
      */
     public function store(StoreReportRequest $request)
     {
-        //
-    }
+        // Create resource
+        $report = Report::create($request->all());
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Report  $report
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Report $report)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Report  $report
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Report $report)
-    {
-        //
+        // Success message
+        if($report) return response()->json([
+            'message' => 'Report created succesfully', 
+            'report' => $report
+        ], 201);
     }
 
     /**
@@ -70,7 +45,14 @@ class ReportController extends Controller
      */
     public function update(UpdateReportRequest $request, Report $report)
     {
-        //
+        // Update resource
+        $resource = $report->update($request->all());
+
+        // Success message
+        if($resource) return response()->json([
+            'message' => 'Report updated succesfully',
+            'report' => $resource,
+        ], 201);
     }
 
     /**
@@ -81,6 +63,12 @@ class ReportController extends Controller
      */
     public function destroy(Report $report)
     {
-        //
+        // Delete resource
+        $report->delete();
+
+        // Error message
+        return response()->json([
+            'message' => 'Report deleted succesfully',
+        ], 201);
     }
 }

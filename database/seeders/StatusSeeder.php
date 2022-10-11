@@ -13,6 +13,6 @@ class StatusSeeder extends Seeder
      */
     public function run()
     {
-        //
+        \App\Models\Status::factory(1)->create();
     }
 }

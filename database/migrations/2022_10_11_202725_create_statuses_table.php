@@ -15,6 +15,12 @@ class CreateStatusesTable extends Migration
     {
         Schema::create('statuses', function (Blueprint $table) {
             $table->id();
+            $table->string('status_code')->nullable();
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->string('module');
+            $table->string('icon')->nullable();
+            $table->string('color')->nullable();
             $table->timestamps();
         });
     }

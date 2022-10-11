@@ -14,7 +14,13 @@ class TypeFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->name(),
+            'description' => $this->faker->sentence(),
+            'type_code' => '001',
+            'status_id' => 1,
+            'module' => 'general',
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

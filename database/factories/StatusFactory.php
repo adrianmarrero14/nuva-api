@@ -14,7 +14,12 @@ class StatusFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => 'ACTIVE',
+            'description' => $this->faker->sentence(),
+            'status_code' => '001',
+            'module' => 'general',
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

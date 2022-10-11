@@ -15,6 +15,13 @@ class CreateTypesTable extends Migration
     {
         Schema::create('types', function (Blueprint $table) {
             $table->id();
+            $table->string('type_code')->nullable();
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->foreignId('status_id');
+            $table->string('module');
+            $table->string('icon')->nullable();
+            $table->string('color')->nullable();
             $table->timestamps();
         });
     }
